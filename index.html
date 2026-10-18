@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gửi em yêu - 20/10 💗</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --pink: #ff5d91;
+  --dark: #b52f68;
+  --light: #fff0f6;
+  --cream: #fffaf4;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #873c60;
+  background: linear-gradient(145deg, #ffe3ed, #fff5f7, #ffe6e0);
+  overflow-x: hidden;
+}
+
+button { font: inherit; }
+
+.music {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  padding: 11px 15px;
+  background: white;
+  border: 2px solid #ffd0df;
+  border-radius: 30px;
+  color: var(--dark);
+  cursor: pointer;
+  box-shadow: 0 5px 20px #b52f6818;
+}
+
+.container {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding: 70px 18px 35px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 38px 25px;
+  border-radius: 32px;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.79);
+  box-shadow: 0 15px 45px #d9508020;
+  animation: appear 1s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sticker {
+  display: inline-block;
+  font-size: 55px;
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50% { transform: rotate(5deg) translateY(-8px); }
+}
+
+.tag {
+  display: inline-block;
+  background: #ffe3ee;
+  border-radius: 30px;
+  padding: 9px 15px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--dark);
+}
+
+h1 {
+  color: #d83f79;
+  font-size: clamp(30px, 6vw, 53px);
+  line-height: 1.2;
+  margin: 22px 0 10px;
+  text-shadow: 2px 3px #ffcbdc;
+}
+
+.date {
+  font-size: clamp(43px, 9vw, 72px);
+  font-weight: 900;
+  color: #ff6598;
+  animation: heartbeat 1.6s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.06); }
+  20%, 40% { transform: scale(1); }
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: bold;
+  color: #bd4273;
+}
+
+.message {
+  max-width: 620px;
+  margin: 22px auto;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.sender {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff8db2, #ff5c91);
+  color: white;
+  padding: 13px 23px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px #ff659830;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 25px;
+  padding: 14px 20px;
+  color: white;
+  background: linear-gradient(135deg, #ff77a5, #e84783);
+  box-shadow: 0 6px 15px #e8478328;
+  cursor: pointer;
+  transition: transform .2s, filter .2s;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  filter: brightness(1.05);
+}
+
+.btn.purple {
+  background: linear-gradient(135deg, #d89bff, #b16be5);
+}
+
+.btn.gold {
+  background: linear-gradient(135deg, #ffc66c, #ff8f8f);
+}
+
+.letter {
+  display: none;
+  max-width: 650px;
+  margin: 28px auto 0;
+  padding: 25px;
+  text-align: left;
+  background: #fff9f1;
+  border: 2px dashed #ff9fbd;
+  border-radius: 20px;
+  line-height: 1.9;
+  box-shadow: 0 5px 20px #e8478310;
+}
+
+.letter.show {
+  display: block;
+  animation: openLetter .8s ease both;
+}
+
+@keyframes openLetter {
+  from { opacity: 0; transform: translateY(20px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.letter h2 {
+  text-align: center;
+  color: #d83f79;
+}
+
+.signature {
+  text-align: right;
+  font-size: 19px;
+  font-weight: bold;
+  color: #d83f79;
+  margin-top: 22px;
+}
+
+.surprise {
+  display: none;
+  margin: 25px auto 0;
+  padding: 22px;
+  max-width: 550px;
+  background: #fff0f6;
+  border-radius: 22px;
+  animation: appear .7s ease;
+}
+
+.surprise.show { display: block; }
+
+.surprise h2 { color: #d83f79; }
+
+footer {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 13px;
+  color: #a85c7b;
+  line-height: 1.8;
+}
+
+/* Hoa và trái tim bay */
+.particle {
+  position: fixed;
+  top: -40px;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translate(0, -20px) rotate(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  to {
+    transform: translate(var(--drift), 110vh) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+/* Pháo hoa */
+.spark {
+  position: fixed;
+  width: 9px;
+  height: 9px;
+  z-index: 30;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+  to {
+    transform: translate(var(--dx), var(--dy)) scale(.1);
+    opacity: 0;
+  }
+}
+
+.bubble {
+  display: inline-block;
+  margin: 4px;
+  padding: 8px 12px;
+  background: #fff0f6;
+  border-radius: 20px;
+  animation: wiggle 3s infinite;
+}
+
+@media (max-width: 520px) {
+  .container { padding: 75px 12px 25px; }
+  .card { padding: 30px 17px; }
+  .message { font-size: 16px; }
+  .buttons { flex-direction: column; }
+  .btn { width: 100%; }
+  .letter { padding: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<button class="music" id="musicBtn">🎵 Bật nhạc</button>
+
+<main class="container">
+  <section class="card">
+
+    <div class="tag">💗 A LITTLE GIFT FOR YOU 💗</div>
+
+    <div class="sticker">🐻🌷🐰</div>
+
+    <h1>Chúc mừng ngày<br>Phụ nữ Việt Nam</h1>
+
+    <div class="date">20/10 💕</div>
+
+    <p class="subtitle">Gửi tới tất cả các cô gái đặc biệt của tớ ! 🌸</p>
+
+    <p class="message">
+      Nhân ngày 20/10, tớ muốn chúc các cậu luôn xinh đẹp,
+      vui vẻ và hạnh phúc.
+      Mong mọi điều dịu dàng nhất sẽ đến với các cậu,
+      mong nụ cười luôn ở trên đôi môi mỗi ngày.
+      <br>
+      <strong>
+        Cảm ơn mọi người vì đã xuất hiện và làm cho
+        thế giới của tớ trở nên đáng yêu hơn. 💖
+      </strong>
+    </p>
+
+    <div class="sender">
+      💌 Người gửi: Nguyễn Anh Tùng 💗
+    </div>
+
+    <p>
+      <span class="bubble">🌷 Xinh đẹp</span>
+      <span class="bubble">💗 Hạnh phúc</span>
+      <span class="bubble">✨ Bình an</span>
+    </p>
+
+    <div class="buttons">
+      <button class="btn" id="letterBtn">💌 Mở thư yêu thương</button>
+      <button class="btn purple" id="surpriseBtn">🎁 Nhận bất ngờ</button>
+      <button class="btn gold" id="fireworkBtn">🎆 Tạo pháo hoa</button>
+    </div>
+
+    <article class="letter" id="letter">
+      <h2>💌 Gửi tới người những người con gái đặc biệt !  💌</h2>
+
+      <p>Cậu à! ❤️</p>
+
+      <p>
+        Tớ không biết phải nói những lời hoa mỹ thế nào,
+        nhưng tớ thật sự mong cậu sẽ luôn vui vẻ
+        và hạnh phúc.
+      </p>
+
+      <p>
+        Nhân ngày Phụ nữ Việt Nam 20/10, tớ chúc cậu
+        luôn xinh đẹp, tự tin, mạnh mẽ và đạt được
+        những điều mà cậu mong muốn.
+      </p>
+
+      <p>
+        Nếu có những ngày cậu mệt mỏi, mong cậu nhớ rằng
+        cậu vẫn luôn là một cô gái tuyệt vời.
+        Cậu xứng đáng được yêu thương, được trân trọng
+        và được đối xử bằng tất cả sự chân thành.
+      </p>
+
+      <p>
+        Cảm ơn cậu vì đã khiến những điều bình thường
+        cũng trở nên đặc biệt.
+        Mong rằng những ngày phía trước của cậu
+        sẽ có thật nhiều niềm vui và những điều bất ngờ dễ thương.
+      </p>
+
+      <p>
+        <strong>
+          Chúc chị em đặc biệt có một ngày 20/10
+          thật ngọt ngào. Mong mọi người luôn mỉm cười nhé! 💗
+        </strong>
+      </p>
+
+      <div class="signature">
+        Thương gửi ,<br>
+         Nguyễn Anh Tùng 🧸❤️
+      </div>
+    </article>
+
+    <div class="surprise" id="surprise">
+      <div style="font-size:60px">🎀💐🐻</div>
+      <h2>Một điều bí mật dành cho cậu!</h2>
+      <p>
+        Nếu nụ cười của cậu là một bông hoa,
+        chắc hẳn thế giới này sẽ trở thành
+        một khu vườn thật xinh đẹp. 🌷
+      </p>
+      <p><strong>Hôm nay và cả những ngày sau, hãy luôn hạnh phúc nhé! 💖</strong></p>
+    </div>
+
+    <footer>
+      Được tạo bằng tất cả sự chân thành<br>
+      🌸 20/10 — Ngày dành cho những điều dịu dàng 🌸<br>
+      Made with love by Nguyễn Anh Tùng 💗
+    </footer>
+
+  </section>
+</main>
+
+<script>
+// 1. Hiệu ứng sticker, hoa và trái tim bay
+function createParticle() {
+  const el = document.createElement("div");
+  el.className = "particle";
+
+  const stickers = ["💗", "🌸", "🌷", "💕", "✨", "🎀", "💖"];
+  el.textContent = stickers[Math.floor(Math.random() * stickers.length)];
+
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = (16 + Math.random() * 18) + "px";
+  el.style.animationDuration = (5 + Math.random() * 5) + "s";
+  el.style.setProperty("--drift", (Math.random() * 160 - 80) + "px");
+
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 11000);
+}
+
+setInterval(createParticle, 350);
+
+// 2. Mở thư và cuộn đến bức thư
+const letter = document.getElementById("letter");
+const letterBtn = document.getElementById("letterBtn");
+
+letterBtn.addEventListener("click", () => {
+  letter.classList.toggle("show");
+
+  if (letter.classList.contains("show")) {
+    letterBtn.textContent = "💌 Đóng thư";
+    letter.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    fireworks();
+  } else {
+    letterBtn.textContent = "💌 Mở thư yêu thương";
+  }
+});
+
+// 3. Hiệu ứng pháo hoa
+function fireworks() {
+  const colors = ["#ff5d91", "#ffd166", "#c77dff", "#ffffff", "#ff9770"];
+
+  for (let b = 0; b < 5; b++) {
+    setTimeout(() => {
+      const x = Math.random() * window.innerWidth;
+      const y = window.innerHeight * (0.15 + Math.random() * 0.4);
+
+      for (let i = 0; i < 24; i++) {
+        const spark = document.createElement("span");
+        spark.className = "spark";
+
+        const angle = Math.PI * 2 * i / 24;
+        const distance = 40 + Math.random() * 110;
+
+        spark.style.left = x + "px";
+        spark.style.top = y + "px";
+        spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+        spark.style.setProperty("--dx", Math.cos(angle) * distance + "px");
+        spark.style.setProperty("--dy", Math.sin(angle) * distance + "px");
+
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1100);
+      }
+    }, b * 180);
+  }
+}
+
+document.getElementById("fireworkBtn").addEventListener("click", fireworks);
+
+// 4. Bất ngờ bí mật
+document.getElementById("surpriseBtn").addEventListener("click", () => {
+  const surprise = document.getElementById("surprise");
+  surprise.classList.toggle("show");
+
+  if (surprise.classList.contains("show")) {
+    document.getElementById("surpriseBtn").textContent = "🎁 Cất món quà";
+    fireworks();
+    surprise.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  } else {
+    document.getElementById("surpriseBtn").textContent = "🎁 Nhận bất ngờ";
+  }
+});
+
+// 5. Nhạc nền tạo bằng âm thanh của trình duyệt
+let audio = null;
+let musicTimer = null;
+let playing = false;
+let noteIndex = 0;
+
+const musicBtn = document.getElementById("musicBtn");
+const melody = [
+  523.25, 659.25, 783.99, 659.25,
+  587.33, 698.46, 880.00, 698.46,
+  523.25, 587.33, 659.25, 523.25,
+  392.00, 493.88, 523.25, 392.00
+];
+
+function playNote(freq) {
+  if (!audio || !playing) return;
+
+  const oscillator = audio.createOscillator();
+  const gain = audio.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, audio.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.04, audio.currentTime + 0.03);
+  gain.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + 0.35);
+
+  oscillator.connect(gain);
+  gain.connect(audio.destination);
+
+  oscillator.start();
+  oscillator.stop(audio.currentTime + 0.38);
+}
+
+musicBtn.addEventListener("click", async () => {
+  if (!playing) {
+    const AudioClass = window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioClass) {
+      musicBtn.textContent = "Trình duyệt không hỗ trợ nhạc";
+      return;
+    }
+
+    if (!audio) audio = new AudioClass();
+    await audio.resume();
+
+    playing = true;
+    musicBtn.textContent = "🎵 Tắt nhạc";
+
+    playNote(melody[noteIndex++ % melody.length]);
+
+    musicTimer = setInterval(() => {
+      playNote(melody[noteIndex++ % melody.length]);
+    }, 420);
+  } else {
+    playing = false;
+    clearInterval(musicTimer);
+    musicBtn.textContent = "🎵 Bật nhạc";
+  }
+});
+</script>
+
+</body>
+</html>
